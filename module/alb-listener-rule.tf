@@ -18,6 +18,6 @@ resource "aws_alb_listener_rule" "main" {
   }
   condition {
     field = "host-header"
-    values = ["${var.subdomain}.*"]
+    values = [var.fp_context == "production" ? "*" : "${var.subdomain}.*"]
   }
 }
