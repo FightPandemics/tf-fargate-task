@@ -52,29 +52,6 @@ resource "aws_ecs_task_definition" "app" {
           "awslogs-stream-prefix": "${var.fp_context}"
         }
       }
-    },
-    {
-      "cpu": 256,
-      "name": "geo-service",
-      "essential": true,
-      "image": "fightpandemics/geo-service:${var.image_tag}",
-      "memory": 4096,
-      "memoryReservation": 1024,
-      "portMappings": [
-        {
-          "containerPort": ${var.geo_port},
-          "hostPort": ${var.geo_port}
-        }
-      ],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-region": "${var.aws_region}",
-          "awslogs-group": "/ecs/${var.subdomain}-geo-service",
-          "awslogs-stream-prefix": "${var.fp_context}"
-        }
-      },
-      "environment": ${jsonencode(var.geo_env_variables)}
     }
   ]
 DEFINITION
