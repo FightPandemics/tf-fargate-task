@@ -16,20 +16,9 @@ variable "backend_env_variables" {
     value: string
   }))
 }
-variable "geo_env_variables" {
-  default = []
-  type = list(object({
-    name: string
-    value: string
-  }))
-}
 variable "backend_port" {
   type = number
   default = 8000
-}
-variable "geo_port" {
-  type = number
-  default = 5000
 }
 variable "client_port" {
   type = number
